@@ -1,0 +1,17 @@
+{
+    "name": "Greentest",
+    "alias": "greentest",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Greentest\\Providers\\GreentestServiceProvider",
+        "Modules\\Greentest\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}
