@@ -40,5 +40,11 @@
         "psr-4": {
             "Modules\\Greentest\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/willvrd/greentest"
+        }
+    ]
 }
