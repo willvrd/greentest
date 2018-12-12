@@ -35,7 +35,19 @@ class RegisterGreentestSidebar implements \Maatwebsite\Sidebar\SidebarExtender
      * @return Menu
      */
     public function extendWith(Menu $menu)
-    {
+    {   
+
+        $menu->group(trans('core::sidebar.content'), function (Group $group) {
+            $group->item(trans('greentest::businesses.title.businesses'), function (Item $item) {
+                $item->icon('fa fa-file');
+                $item->weight(10);
+                $item->route('admin.greentest.business.index');
+                $item->authorize(
+                    $this->auth->hasAccess('greentest.businesses.index')
+                );
+            });
+        });
+
         return $menu;
     }
 }

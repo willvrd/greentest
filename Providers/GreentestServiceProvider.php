@@ -29,7 +29,9 @@ class GreentestServiceProvider extends ServiceProvider
         $this->app['events']->listen(BuildingSidebar::class, RegisterGreentestSidebar::class);
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('businesses', array_dot(trans('greentest::businesses')));
             // append translations
+
         });
     }
 
@@ -52,6 +54,19 @@ class GreentestServiceProvider extends ServiceProvider
 
     private function registerBindings()
     {
+        $this->app->bind(
+            'Modules\Greentest\Repositories\businessRepository',
+            function () {
+                $repository = new \Modules\Greentest\Repositories\Eloquent\EloquentbusinessRepository(new \Modules\Greentest\Entities\business());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Greentest\Repositories\Cache\CachebusinessDecorator($repository);
+            }
+        );
 // add bindings
+
     }
 }
